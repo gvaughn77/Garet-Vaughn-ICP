@@ -22,6 +22,6 @@ Garet Vaughn
 gvaughn@utexas.edu  
 The University of Texas at Austin  
   
->Kindness is the language which the
->deaf can hear and the blind can see.
-> -Mark Twain
+>Kindness is the language which the  
+>deaf can hear and the blind can see.  
+> -Mark Twain  
