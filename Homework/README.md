@@ -7,7 +7,7 @@
 **Level:** Undergraduate - Sophomore  
 **ICP Class Position:** Student  
 **Course Webpage:** http://www.shahmoradi.org/ICP2017F/  
-**Photo:** ![Garet Picture](./img/me.png)  
+**Photo:** ![Garet Picture](https://github.com/gvaughn77/Garet-Vaughn-ICP/blob/master/images/Garet%20Picture.jpg)  
  
  This repository contains my homework, quizzes, and virtually every effort that I have made for ICP2017F class. The structure of the project is the following:
 
