@@ -1,3 +1,4 @@
+```bash
 a = 2; %Variable names must start with a letter
 b = 3;
 a1 = b; %Variable b was not defined
@@ -30,3 +31,4 @@ disp('Persian is not the same as Spanish'); % values must be same class
 % The first one is a single string
 % The second is a 1x4 array of strings
 % The third is also a single string
+```
