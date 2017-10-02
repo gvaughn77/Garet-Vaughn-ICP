@@ -25,8 +25,8 @@ class = 'INF1100, gr 2';         %didn't have matching quotes (same error as lin
 continue_ = x > 0;
 grass = fox == false;            %false used for logical comparison was only given one term
 wolf = fox == true;          
-Persian = ['Persian' ' is ' 'a' ' human ' 'language'];           % , and ; made matrix dimensions
-Spanish = {'Spanish ' 'is ' 'another '  'language'};             % extra }
+Persian = ['Persian' ' is ' 'a' ' human ' 'language']            % , and ; made matrix dimensions
+Spanish = {'Spanish ' 'is ' 'another '  'language'}              % extra }
 disp('Persian is not the same as Spanish');                      % values must be same class
 % The first one is a single string
 % The second is a 1x4 array of strings
