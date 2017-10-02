@@ -1,6 +1,6 @@
 % Assignment 2
 %% 1.
-'''bash 
+```bash 
 a=1: a = 1 %Gives variable "a" a value of 1
 b='x': b = x %Gives variable "b" a string value of 'x'
 c=true: c = logical 1 %Gives var. "c" a logical value of 1
@@ -29,7 +29,7 @@ Name      Size            Bytes  Class     Attributes
   g         1x4               456  cell                
   h         1x4               491  cell                
 % Lists information about the variables
-'''
+```
 
 %% 2.
 ```bash
