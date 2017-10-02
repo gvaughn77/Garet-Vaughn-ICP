@@ -157,9 +157,11 @@ a =
      
 c=zeros(3);
 
-v=[2 2 2];
+for i=1:3
 
-c+diag(v)
+    c(i,i)=2
+    
+end
 
 c = 
 
