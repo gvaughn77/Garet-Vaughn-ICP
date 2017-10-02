@@ -1,4 +1,6 @@
-####Assignment 2  
+#### Assignment 2  
+<br>
+<br>
 %% 1.
 ```bash 
 a=1: a = 1                         %Gives variable "a" a value of 1
