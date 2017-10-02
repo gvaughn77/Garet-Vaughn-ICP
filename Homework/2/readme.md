@@ -1,7 +1,5 @@
 #### Assignment 2  
-<br>
-<br>
-%% 1.
+**%% 1.
 ```bash 
 a=1: a = 1                         %Gives variable "a" a value of 1
 b='x': b = x                       %Gives variable "b" a string value of 'x'
@@ -33,7 +31,7 @@ Name      Size            Bytes  Class     Attributes
                                    % Lists information about the variables
 ```
 
-%% 2.
+**%% 2.
 ```bash
 % When you store a larger or smaller integer than allowed in int8
 %it automatically changes the value to its maximum limits.
@@ -44,7 +42,7 @@ intmax('int32'): ans =  int32    2147483647
 intmin('int32'): ans =  int32   -2147483648
 ```
 
-%% 3.
+**%% 3.
 ```
 1\2: ans =  2         %Quotient of 2 and 1
 1/2: ans =  0.5000    %Quotient of 1 and 2
@@ -56,7 +54,7 @@ int8(1/3): ans =  0   %Quotient of 1 and 3 as interger rounded down
 5*4/2*3: ans =  30    %Interpreted as (5*4*3)/2
 ```
 
-%% 4(a).
+**%% 4(a).
 ```bash
 a=[1 0;2 1]
 a =
@@ -82,7 +80,7 @@ d =
      5
 ```
 
-% 4(b).
+**% 4(b).
 ```bash
 a+b  %Sum of each element with its counterpart in the other array
 ans =
@@ -170,7 +168,7 @@ c =
 	 
 ```
 
-%% 8. 
+**%% 8. 
 ```bash
 %Trying to run this script from a different directory causes
 %it to be an undefined function because it only searches the 
