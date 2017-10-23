@@ -1,0 +1,84 @@
+%% 1.
+%The .* is an elementwise multiplication rather than matrix multiplacation
+%for example:
+a= [1 2 3; 4 5 6; 7 8 9]*[2 3 4; 5 6 7; 8 9 0]
+
+a =
+
+    36    42    18
+    81    96    51
+   126   150    84
+   
+a= [1 2 3; 4 5 6; 7 8 9].*[2 3 4; 5 6 7; 8 9 0]
+
+a =
+
+     2     6    12
+    20    30    42
+    56    72     0  
+    
+%% 2.
+[1 0 3].*[2 3 7]
+
+ans =
+
+     2     0    21
+%which means (1*2)+(0*3)+(3*7)
+
+%% 3.
+%(a)
+function (string) = 
+end
+
+
+
+%% 4.
+%| is the normal logical operator OR whereas the other is the short-circuit
+%OR meaning it will work in repeated loops, helping with code efficiency
+
+a=input('Please enter a real number or a string')
+if isreal(a) || isstring(a)
+    disp('True')
+else 
+    disp('False')
+end
+
+
+%% 5
+a=1;
+b=0;
+x=a/b==10
+
+x =
+
+  logical
+
+   0
+   
+%% 6.
+
+%The second option would be more efficient because you could input data and
+%complete calculations in arrarys rather than one at a time. It is also
+%more compact.
+
+
+%% 7.
+
+function (a,b,c) = getroot(A)
+A=(-b-sqrt(b^2-(4*a*c)))/(2*a)
+end
+
+%% 8.
+
+C=struc(a,b,c)
+
+function(C)= integ(A)
+B=x^2+C(3)*x+1;
+A=integral(B,C(1),C(2))
+end
+
+%% 9.
+
+function(n)= getFac(A)
+A=n*(n-1)
+
