@@ -1,0 +1,373 @@
+%% #1
+function outvec = convertTempFor(Invec,a)
+	x = length(Invec);
+	y = [];
+	if strcmp(a,'C2F') && isvector(Invec)
+		for p = 1:x
+			y(p) = Invec(p)*1.8+32;
+		end
+		disp([char(9),'y = ',num2str(y)]);
+	elseif strcmp(a,'F2C') && isvector(Invec)
+		for p = 1:x
+			y(p) = (Invec(p)-32)/1.8;
+		end
+		disp([char(9),'y = ',num2str(y)]);
+	else
+		disp('Please enter a vector and a string named ''C2F'' or ''F2C'' depending on which conversion you want.')
+	end
+end
+
+function output = convertTempWhile(Invec, a)
+	if strcmp(a,'C2F') && isvector(Invec)
+		x = length(Invec);
+		y = [];
+		b = 1;
+		while b < x+1
+			y(b) = Invec(b)*1.8+32;
+			b = b + 1;
+		end
+		disp([char(9),'y = ',num2str(y)]);
+	elseif strcmp(a,'F2C') && isvector(Invec)
+		x = length(Invec);
+		y = [];
+		b = 1;
+		while b < x+1
+			y(b) = (Invec(b)-32)/1.8;
+			b = b + 1;
+		end
+		disp([char(9),'y = ',num2str(y)]);
+	else
+		disp('Please enter a vector and a string named ''C2F'' or ''F2C'' depending on which conversion you want.')
+	end
+end
+
+function output = convertTempVec(Invec,a)
+	if strcmp(a,'C2F') && isvector(Invec)
+		y = Invec.*1.8+32;
+		disp([char(9),'y = ',num2str(y)]);
+	elseif strcmp(a,'F2C') && isvector(Invec)
+		y = (Invec-32)./1.8;
+		disp([char(9),'y = ',num2str(y)]);
+	else
+		disp('Please enter a vector and a string named ''C2F'' or ''F2C'' depending on which conversion you want.')
+	end
+end
+
+%InVec = [-20, -15, -10, -5, 0, 5, 10, 15, 20, 25, 30, 35, 40];
+%convertTempFor(InVec,'C2F')
+% y =
+%    -4     5    14    23    32    41    50    59    68    77    86    95
+%    104
+%convertTempWhile(InVec,'C2F')
+% y =
+%    -4     5    14    23    32    41    50    59    68    77    86    95
+%    104
+%convertTempVec(InVec,'C2F')
+% y =
+%    -4     5    14    23    32    41    50    59    68    77    86    95
+%    104
+
+
+%% #2
+
+function outvec = convertTempFor(Invec,a)
+	tic
+	x = length(Invec);
+	y = [];
+	if strcmp(a,'C2F') && isvector(Invec)
+		for p = 1:x
+			y(p) = Invec(p)*1.8+32;
+		end
+		disp([char(9),'y = ',num2str(y)]);
+	elseif strcmp(a,'F2C') && isvector(Invec)
+		for p = 1:x
+			y(p) = (Invec(p)-32)/1.8;
+		end
+		disp([char(9),'y = ',num2str(y)]);
+	else
+		disp('Please enter a vector and a string named ''C2F'' or ''F2C'' depending on which conversion you want.')
+	end
+	toc
+end
+
+%convertTempFor(a,'C2F')
+%	y = -4    5   14   23   32   41   50   59   68   77   86   95  104
+%Elapsed time is 0.004589 seconds.
+
+function output = convertTempWhile(Invec, a)
+	tic
+	if strcmp(a,'C2F') && isvector(Invec)
+		x = length(Invec);
+		y = [];
+		b = 1;
+		while b < x+1
+			y(b) = Invec(b)*1.8+32;
+			b = b + 1;
+		end
+		disp([char(9),'y = ',num2str(y)]);
+	elseif strcmp(a,'F2C') && isvector(Invec)
+		x = length(Invec);
+		y = [];
+		b = 1;
+		while b < x+1
+			y(b) = (Invec(b)-32)/1.8;
+			b = b + 1;
+		end
+		disp([char(9),'y = ',num2str(y)]);
+	else
+		disp('Please enter a vector and a string named ''C2F'' or ''F2C'' depending on which conversion you want.')
+	end
+	toc
+end
+
+
+%convertTempWhile(a,'C2F')
+%	y = -4    5   14   23   32   41   50   59   68   77   86   95  104
+%Elapsed time is 0.010765 seconds.
+
+function output = convertTempVec(Invec,a)
+	tic
+	if strcmp(a,'C2F') && isvector(Invec)
+		y = Invec.*1.8+32;
+		disp([char(9),'y = ',num2str(y)]);
+	elseif strcmp(a,'F2C') && isvector(Invec)
+		y = (Invec-32)./1.8;
+		disp([char(9),'y = ',num2str(y)]);
+	else
+		disp('Please enter a vector and a string named ''C2F'' or ''F2C'' depending on which conversion you want.')
+	end
+	toc
+end
+
+%convertTempVec(a,'C2F')
+%	y = -4    5   14   23   32   41   50   59   68   77   86   95  104
+%Elapsed time is 0.001815 seconds.
+
+%% #3
+List = { {'M','A','T','L','A','B'}, {' '}, {'i','s'}, {' '}, {'a'}, {' '}, {'s','t','r','a','n','g','e'}, {', '}, {'b','u','t',' '}, {'p','o','p','u','l','a','r'}, {' '}, {'p','r','o','g','r','a','m','m','i','n','g',' ','l','a','n','g','u','a','g','e'} };
+a = length(List);
+scr = [];
+scri = [];
+for i = 1:a
+    InCell = List{i};
+    b = length(List{i});
+    for c = 1:b
+        scr = [scr,InCell{c}];
+    end
+    scri = [scr];
+end
+disp(scri)
+
+%extractLetter
+%MATLAB is a strange, but popular programming language
+
+%% #4
+
+%This function takes the squareroot and squares the number 2 an equal
+%number of times from 1 to 60. Since the roots and squares can't be taken
+%out to an infinite number of decimal places, the numbers are eventually
+%rounded and become further away from the answer with each iteration.
+
+%% #5
+
+%This function divides 1 by 2 until the number is small enough that MatLab
+%condsiders the number close enough to zero to equate 1.0 to 1.0+eps. So
+%1.0 ~= 1.0 + eps is considered false when eps = 0.
+
+%% #6
+
+function getLPrime(a)
+for b = a:-1:2
+    if isprime(b) && b<a
+        disp(b)
+        break
+    else
+        continue
+    end
+end
+end
+
+%getLPrime(123)
+%   113
+
+%% #7
+
+function fibLoop()
+
+    n = input('Please enter a non-negative integer or type stop: ','s');
+    if strcmp(n,'stop')
+        return
+    else
+        n = str2double(n);
+        if isreal(n)
+            if n>=0 && round(n)==n
+                disp([char(9),'fibLoop(',num2str(n),') = ',num2str(getFib(n))]);
+                f = @()getFib(n);
+                disp([char(9),'average runtime: ',num2str(timeit(f)),' seconds']);
+                fibLoop()
+                return
+            end
+        end
+        disp('The input argument is not a non-negative integer!');
+        fibLoop()
+    end
+    
+    function fib = getFib(n_int)
+        if n_int == 0
+            fib = 0;
+        elseif n_int == 1
+            fib = 1;
+        else
+            fibOld = 0;
+            fibNew = 1;
+            for i = 2:n_int
+                fib = fibOld + fibNew;
+                fibOld = fibNew;
+                fibNew = fib;
+            end
+        end
+    end
+end
+
+%Please enter a non-negative integer or type stop: 10
+%	fibLoop(10) = 55 
+%	average runtime: 3.9297e-06 seconds
+%Please enter a non-negative integer or type stop: 15
+%	fibLoop(15) = 610
+%	average runtime: 3.2862e-06 seconds
+%Please enter a non-negative integer or type stop: 20
+%	fibLoop(20) = 6765
+%	average runtime: 2.3937e-06 seconds
+%Please enter a non-negative integer or type stop: 25
+%	fibLoop(25) = 75025
+%	average runtime: 2.1711e-06 seconds
+%Please enter a non-negative integer or type stop: 30
+%	fibLoop(30) = 832040
+%	average runtime: 2.3352e-06 seconds
+%Please enter a non-negative integer or type stop: 35
+%	fibLoop(35) = 9227465
+%	average runtime: 4.3213e-06 seconds
+
+%fibLoop is much faster and more effiecient than fib. This is because
+%fibLoop does not have to call more functions to calculate itself and
+%calculates the fibonacci number in one "move"
+
+
+%% #8
+function outStruc = timeFib(n)
+	if ~ischar(n) && isreal(n) && n>=0 && round(n)==n
+	f = @() getFib(n);
+	outStruc.n = n;
+	outStruc.fib = getFib(n);
+	outStruc.runtime = timeit(f);
+	else 
+		error('The input argument is not a non-negative integer!')
+	end
+
+
+	function fib = getFib(n_int)
+			if n_int == 0
+				fib = 0;
+			elseif n_int == 1
+				fib = 1;
+			else
+				fib = getFib(n_int-1) + getFib(n_int-2);
+			end
+	end
+end
+
+%timeFib(20)
+%
+%ans = 
+%
+%  struct with fields:
+%
+%          n: 20
+%        fib: 6765
+%    runtime: 0.0141
+%
+%timeFib('Garet')
+%Error using timeFib (line 8)
+%The input argument is not a non-negative integer!
+
+function outStruc = timeFibLoop(n)
+	if ~ischar(n) && isreal(n) && n>=0 && round(n)==n
+	f = @() getFibLoop(n);
+	outStruc.n = n;
+	outStruc.fib = getFibLoop(n);
+	outStruc.runtime = timeit(f);
+	else 
+		error('The input argument is not a non-negative integer!')
+	end
+
+
+	function fib = getFibLoop(n_int)
+			if n_int == 0
+				fib = 0;
+			elseif n_int == 1
+				fib = 1;
+			else
+				fibOld = 0;
+				fibNew = 1;
+				for i = 2:n_int
+					fib = fibOld + fibNew;
+					fibOld = fibNew;
+					fibNew = fib;
+				end
+			end
+	end
+end
+
+% timeFibLoop(20)
+% Warning: The measured time for F may be inaccurate because it is running too fast. Try
+% measuring something that takes longer. 
+% > In timeit (line 158)
+%   In timeFibLoop (line 6) 
+% 
+% ans = 
+% 
+%   struct with fields:
+% 
+%           n: 20
+%         fib: 6765
+%     runtime: 3.7482e-06
+% 
+% timeFibLoop('Garet')
+% Error using timeFibLoop (line 8)
+% The input argument is not a non-negative integer!
+
+function fibOutput = writeFibResult()
+	numbers = {};
+	n =1;
+	while(~strcmp(n,'stop'))
+		n = input('Please enter a non-negative integer or type stop: ','s');
+		if strcmp(n,'stop')
+			return;
+		else
+			n = str2double(n);
+			length = size(numbers);
+			numbers{1,length(2)+1}=n; %#ok<AGROW>
+			writeFibResult
+		end
+	end
+
+	b = size(numbers);
+	disp(numbers);
+	for i = 1:b(2)
+		fibOutput(i) = timeFib(cell2mat(numbers(i))); %#ok<AGROW>
+		fibloop(i) = timeFibLoop(cell2mat(numbers(i))); %#ok<AGROW>
+	end
+
+	myarray1 = [fibOutput.n;fibOutput.fib;fibOutput.runtime];
+	fileID = fopen('fibOutput.txt','w');
+	fprintf(fileID,'%6s %11s %17s\n','n','fib','runtime(s)');
+	fprintf(fileID,'%6d %11d %16.5d \n',myarray1);
+	fclose(fileID);
+
+
+	myarray2 = [fibloop.n;fibloop.fib;fibloop.runtime];
+	fileID = fopen('fibLoopOutput.txt','w');
+	fprintf(fileID,'%6s %11s %17s\n','n','fib','runtime(s)');
+	fprintf(fileID,'%6d %11d %16.5d \n',myarray2);
+	fclose(fileID);
+end
