@@ -1,0 +1,49 @@
+%% Quiz 4
+% #1
+% (a)
+function output = getFacWhile(n)
+if n == 0
+    output = 1;
+else
+norig = n;
+fac = n;
+    while n > 1
+        fac = fac * norig-1;
+        norig = norig-1;
+    end
+    output = fac;
+end
+end
+
+% (b)
+function output = getFacFor(n)
+if n == 0
+    output = 1;
+else
+    fac = n;
+    for i = n:-1:1
+        fac = fac * i-1;
+    end
+    output = fac;
+end
+
+% (c)
+function output = getFacVec(n)
+if n == 0
+    output = 1;
+else
+    fac = prod([n:-1:1]);
+    output = fac;
+end
+end
+
+
+% #2
+
+f = @() getFacWhile(n);
+g = @() getFacFor(n);
+h = @() getFacVec(n);
+
+disp(['average runtime for getFacWhile(',num2str(n),'):',num2str(f),'seconds']);
+disp(['average runtime for getFacFor(',num2str(n),'):',num2str(g),'seconds']);
+disp(['average runtime for getFacVec(',num2str(n),'):',num2str(h),'seconds']);
