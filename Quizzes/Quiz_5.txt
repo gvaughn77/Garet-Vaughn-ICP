@@ -1,0 +1,32 @@
+%% 1
+data = importdata('chain.txt');
+column = data.data(:,4);
+plot(column,'color','red','linewidth',3)
+
+xlabel('Sample Number');
+    set(gca,'xscale','log');
+    xlim([1.0000e0 1.0000e6]);
+    xticks([ 1.0000e0 1.0000e1 1.0000e2 1.0000e3 1.0000e4 1.0000e5 1.0000e6]);
+
+ylabel('Growth Rate');
+    ylim([-2.4 -.4]);
+    ytics([-.4 -.6 -.8 -1 -1.2 -1.4 -1.6 -1.8 -2 -2.2 -2.4]);
+
+
+%% 2
+function robustWebRead(input)
+if isstring(input)
+try
+    webpage = webread(input);
+catch
+    disp('The page does not exist!')
+end
+imshow(webpage);
+disp('Done.')
+else
+    disp('Please enter a web address in the form of a string!')
+end
+
+
+%%3
+gca refers to current active plot whereas gcf refers to the current figure handle
