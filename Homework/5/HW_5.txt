@@ -1,0 +1,153 @@
+%HW #5
+%% #1
+rng(131313);
+nStudents = 99;
+sData = readtable('students.csv');
+
+%randomizes order of nStudents with no repeats
+group = randperm(nStudents);
+
+%creates empty 3x33 cell array
+groupTrip = cell(3,nStudents/3);
+
+%fills the cell array starting a the 1st, 33rd, and 66th position in
+%nStudents
+for i = 1:nStudents/3
+    groupTrip(:,i) = [sData.Student(group(i)), sData.Student(group(nStudents/3+i)), sData.Student(group(2*nStudents/3+i))];
+end
+
+%writes an excel file with the groups of three
+xlswrite('groupTriples.xlsx',groupTrip);
+
+%% #2
+function fetchDataFromWeb()
+data = webread('http://www.shahmoradi.org/ICP2017F/homework/5-problems/triggers.txt');
+data = strsplit(data,'\n');
+dataDir = '.swift/';
+mkdir(dataDir);
+missingCounter = 0;
+for i=1:length(data)
+    
+    try
+       dataRepository = 'http://www.shahmoradi.org/ICP2017F/homework/5-problems/swift/';    %storing in swift folder in matlab dir
+       filename = ['GRB', data{i}, '_ep_flu.txt'];
+       dataURL = [dataRepository,filename];
+       fileID = fopen([dataDir,filename],'w');
+       fprintf(fileID, '%s',webread(dataURL));
+       fclose(fileID);
+    catch
+       missingCounter = missingCounter + 1;
+       disp(['The requested file does not exist on the web! skipping...', num2str(missingCounter)]);
+    end
+    
+end
+disp(['There are ' , num2str(missingCounter), ' missing files'])
+end
+
+
+
+function plotDataFromFile()
+directory = dir('C:\Users\gvaug\Documents\MATLAB\.swift');
+success = 0;
+data = [0,0];
+     for i = 3:size(directory)
+         if(directory(i).bytes>0)
+             currentdata = readtable(['.swift/',directory(i).name]);
+             try 
+                 currarr = table2array(currentdata);
+                 if(all(currarr(:,2)<0.0)) 
+                     data = [data ; table2array(currentdata)];
+                     success = success+1;
+                 end
+             catch
+                 disp(['didnt recognize at', directory(i).name]);
+             end
+         end
+     end
+    
+    scatter(exp(data(:,2)), data(:,1), 1,'red','filled','MarkerFaceAlpha',.1,'MarkerEdgeAlpha',.1);
+   
+    title('Plot of E_p_e_a_k vs Fluence for 650 Swift GRB events');
+    xlabel('Fluence [ergs/cm^2]');
+    set(gca,'xscale','log');
+    xlim([1.0000e-08 1.0000e-02]);
+    xticks([ 1.0000e-8 1.0000e-6 1.0000e-4 1.0000e-2]);
+    
+   
+    ylabel('E_p_e_a_k');
+    set(gca,'yscale','log');
+    ylim([1.0000e0 1.0000e04]);
+
+    disp(num2str(success));
+end 
+
+ 
+%% #3
+% Not Switching
+rng('shuffle');
+nsample = 100000;
+winCount = 0;
+OddsofWin = zeros(nsample,1);
+doors = [1,2,3];
+for isample = 2:nsample+1
+    doorCar = randi(3);
+    myChoice = randi(3);
+    hostChoice = doors(doors~=doorCar & doors~=myChoice);
+    hostChoice = hostChoice(randi(length(hostChoice)));
+    if myChoice == doorCar
+        winCount = winCount + 1;
+        OddsofWin(isample) = winCount/isample;
+    else
+        OddsofWin(isample) = OddsofWin(isample-1);
+    end
+    disp(['Odds of winning by NOT switching:',num2str(OddsofWin(isample))])
+end
+plot(OddsofWin,'linewidth',3,'color','red')
+set(gca,'xscale','log')
+
+%Switching
+rng('shuffle');
+nsample = 1000;
+winCount = 0;
+OddsofWin = zeros(nsample,1);
+doors = [1,2,3];
+for isample = 2:nsample+1
+    doorCar = randi(3);
+    myChoice = randi(3);
+    hostChoice = doors(doors~=doorCar & doors~=myChoice);
+    hostChoice = hostChoice(randi(length(hostChoice)));
+    myChoice = doors(doors~=hostChoice&doors~=myChoice);
+    if myChoice == doorCar
+        winCount = winCount + 1;
+        OddsofWin(isample) = winCount/isample;
+    else
+        OddsofWin(isample) = OddsofWin(isample-1);
+    end
+    disp(['Odds of winning by switching:',num2str(OddsofWin(isample))])
+end
+plot(OddsofWin,'linewidth',3,'color','blue')
+set(gca,'xscale','log')
+
+%% #4
+
+function montypi()
+n = 5000000;     
+points = rand(n,2);
+circle = zeros(n,2);
+pos = 1;
+for i = 1:n
+        dist = sqrt(points(i,1)^2+points(i,2)^2);
+       if(dist<=1)
+           circle(pos,1) = points(i,1);
+           circle(pos,2) = points(i,2);
+           pos = pos + 1;
+       end
+end
+
+circle = circle(1:pos,1:2);
+disp(['pi is ' num2str(4*length(circle)/(n)) ' for ' num2str(n) ' points']);
+
+scatter(circle(:,1),circle(:,2), 3, 'blue', 'filled');
+title('Estimation of pi using the Monte Carlo game');
+
+end
