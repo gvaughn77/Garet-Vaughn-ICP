@@ -1,0 +1,42 @@
+`)
+```
+load('cells.mat');
+global A B nSample finaln
+A = cells;
+B = [10 12 14 16 18 20 22]; 
+params= fminsearch(@(x)(-logL(x(1),x(2),x(3))), [10,.1,1]);
+nSample=params(1);
+finaln= params(2);
+fplot(@(t)predicted(t),[0 25],'r','linewidth',2.5);
+title('Gompertzian Fit to Rat''s brain tumor growth');
+ylim([0 20*10^7])
+xlim([0 25])
+
+function outPut= logObs(t)
+global A;
+outPut= log(sum(sum(sum(A(:,:,:,t)))));
+end
+
+function outPut = logN(t, lambda, c, sigma)
+outPut = log(100000) + lambda*(1-exp(-c*t));
+end
+
+function outPut = logL(lambda, c, sigma)
+    global B;
+     mu = zeros(length(B), 1);
+     for i=1:length(B)
+         mu(i) = logN(B(i), lambda, c , sigma);
+     end
+     inp = zeros(length(B),1);
+     for i = 1:length(B)
+         inp(i)= logObs(i);
+     end
+     outPut= sum(log(normpdf(inp,mu,sigma*ones(length(B),1))));
+end
+
+function outPut= predicted(x)
+global nSample finaln;
+outPut= 100000.*exp(nSample.*(1-exp(-finaln.*x)));
+end
+```
+
